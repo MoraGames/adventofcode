@@ -8,6 +8,7 @@ import (
 	"github.com/MoraGames/adventofcode/utils"
 )
 
+// This comment contains the first part of the real input file, which isn't parsed by the functions and the solution are based on the hardcoded values in the stacks variable.
 /*
 [Q]         [N]             [N]
 [H]     [B] [D]             [S] [M]
@@ -36,9 +37,10 @@ func D5P1() {
 	moves := utils.SplitLines(ReadFile(5))
 
 	for m := 0; m < len(moves); m++ {
-		fmt.Printf("Move: %v\n\t", moves[m])
+		fmt.Printf("[DEBUG] moves %d:\n > %s\n", m, moves[m])
 
 		move := strings.Split(moves[m], " ")
+		fmt.Printf("[DEBUG] move:\n > %s\n", move)
 		quantity, err := strconv.Atoi(move[1])
 		if err != nil {
 			panic(err)
@@ -55,14 +57,14 @@ func D5P1() {
 		start--
 		destination--
 
-		fmt.Printf("Start: %v\n\tDestination: %v\n\tQuantity: %v\n", stacks[start], stacks[destination], quantity)
+		//fmt.Printf("Start: %v\n\tDestination: %v\n\tQuantity: %v\n", stacks[start], stacks[destination], quantity)
 
 		for q := 0; q < quantity; q++ {
 			stacks[destination] = append(stacks[destination], stacks[start][len(stacks[start])-1])
 			stacks[start] = stacks[start][:len(stacks[start])-1]
 		}
 
-		fmt.Printf("[AFTER]\n\tStart: %v\n\tDestination: %v\n\tQuantity: %v\n", stacks[start], stacks[destination], quantity)
+		//fmt.Printf("[AFTER]\n\tStart: %v\n\tDestination: %v\n\tQuantity: %v\n", stacks[start], stacks[destination], quantity)
 	}
 
 	fmt.Println()
@@ -79,7 +81,7 @@ func D5P2() {
 	moves := utils.SplitLines(ReadFile(5))
 
 	for m := 0; m < len(moves); m++ {
-		fmt.Printf("Move: %v\n\t", moves[m])
+		//fmt.Printf("Move: %v\n\t", moves[m])
 
 		move := strings.Split(moves[m], " ")
 		quantity, err := strconv.Atoi(move[1])

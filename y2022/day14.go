@@ -66,9 +66,9 @@ func D14P1() {
 
 	printGrid(grid)
 
-	for voidFall := false; voidFall == false; {
+	for voidFall := false; !voidFall; {
 		currentSand := sandSpawner
-		for newSand := false; newSand == false; {
+		for newSand := false; !newSand; {
 			printSandCoord(currentSand)
 			switch moveSand(grid, &currentSand) {
 			case 1:
@@ -152,7 +152,7 @@ func D14P2() {
 	for grid[sandSpawner.r][sandSpawner.c] == "+" {
 		currentSand := sandSpawner
 
-		for newSand := false; newSand == false; {
+		for newSand := false; !newSand; {
 			printSandCoord(currentSand)
 			switch moveSand(grid, &currentSand) {
 			case 1:

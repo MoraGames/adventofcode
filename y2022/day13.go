@@ -57,7 +57,7 @@ func D13P2() {
 		fmt.Printf("%v\n", packages[p])
 	}
 
-	for isDone := false; isDone == false; {
+	for isDone := false; !isDone; {
 		isDone = true
 		for p := 0; p < len(packages)-1; p++ {
 			if comparePackage(packages[p], packages[p+1]) == -1 {
@@ -92,7 +92,7 @@ func comparePackage(package0, package1 string) int {
 
 	var comparison int
 	if ep0 == ep1 {
-		if ep0 == false {
+		if !ep0 {
 			fmt.Printf("\tsplitList pkgs[0] = %q\n", pkg0)
 			fmt.Printf("\tsplitList pkgs[1] = %q\n", pkg1)
 
@@ -119,7 +119,7 @@ func comparePackage(package0, package1 string) int {
 			comparison = 0
 		}
 	} else {
-		if ep0 == true {
+		if ep0 {
 			fmt.Printf("\tLeft run out of elements first (is empty)\n")
 			comparison = 1
 		} else {
@@ -140,7 +140,7 @@ func compareElement(element0, element1 string) int {
 	fmt.Printf("\t\telement1 = %q (simple? %v)\n", element1, se1)
 
 	if se0 == se1 {
-		if se0 == true {
+		if se0 {
 			//Both simpleElement
 			elm0, err := strconv.Atoi(element0)
 			if err != nil {
@@ -168,7 +168,7 @@ func compareElement(element0, element1 string) int {
 			el1 := isEmptyList(element1)
 
 			if el0 == el1 {
-				if el0 == false {
+				if !el0 {
 					elm0 := splitList(element0)
 					elm1 := splitList(element1)
 
@@ -193,7 +193,7 @@ func compareElement(element0, element1 string) int {
 					return 0
 				}
 			} else {
-				if el0 == true {
+				if el0 {
 					fmt.Printf("\t\t\tLeft run out of elements first (is empty)\n")
 					return 1
 				} else {
@@ -205,7 +205,7 @@ func compareElement(element0, element1 string) int {
 	} else {
 		//Convert the simpleElement into a listElement
 
-		if se0 == false {
+		if !se0 {
 			if element1 == "" {
 				return -1
 			}

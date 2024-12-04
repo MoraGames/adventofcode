@@ -50,7 +50,7 @@ func D4P1() {
 func D4P2() {
 	var overlapped int
 
-	lines := utils.SplitLines(ReadFile(3))
+	lines := utils.SplitLines(ReadFile(4))
 	for l := 0; l < len(lines); l++ {
 		pairs := strings.Split(lines[l], ",")
 

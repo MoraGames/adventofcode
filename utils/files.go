@@ -5,8 +5,15 @@ import (
 	"os"
 )
 
+var (
+	FilePathYearPrefix = "y"
+	FilePathDayPrefix  = "/day"
+	FilePathTestSuffix = "-test"
+	FilePathExtension  = ".txt"
+)
+
 func ReadFile(year, day int) string {
-	file, err := os.ReadFile("y" + fmt.Sprint(year) + "/day" + fmt.Sprintf("%02v", day) + ".txt")
+	file, err := os.ReadFile(fmt.Sprintf("%s%04d%s%02d%s", FilePathYearPrefix, year, FilePathDayPrefix, day, FilePathExtension))
 	if err != nil {
 		panic(err)
 	}
@@ -14,7 +21,7 @@ func ReadFile(year, day int) string {
 }
 
 func ReadTestFile(year, day int) string {
-	file, err := os.ReadFile("y" + fmt.Sprint(year) + "/day" + fmt.Sprintf("%02v", day) + "-test.txt")
+	file, err := os.ReadFile(fmt.Sprintf("%s%04d%s%02d%s%s", FilePathYearPrefix, year, FilePathDayPrefix, day, FilePathTestSuffix, FilePathExtension))
 	if err != nil {
 		panic(err)
 	}

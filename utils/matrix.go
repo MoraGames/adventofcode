@@ -1,13 +1,13 @@
 package utils
 
-type Coord struct {
-	ry int
-	cx int
+type MatrixCoord interface {
+	GetCol() int
+	GetRow() int
 }
 
-func IsInbound[T any](matrix [][]T, coords ...Coord) bool {
+func IsInbound[T any](matrix [][]T, coords ...MatrixCoord) bool {
 	for _, coord := range coords {
-		if coord.ry < 0 || coord.ry >= len(matrix) || coord.cx < 0 || coord.cx >= len(matrix[coord.ry]) {
+		if coord.GetRow() < 0 || coord.GetRow() >= len(matrix) || coord.GetCol() < 0 || coord.GetCol() >= len(matrix[coord.GetRow()]) {
 			return false
 		}
 	}

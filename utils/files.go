@@ -6,7 +6,7 @@ import (
 )
 
 func ReadFile(year, day int) string {
-	file, err := os.ReadFile("y" + fmt.Sprint(year) + "/day" + fmt.Sprint(day) + ".txt")
+	file, err := os.ReadFile("y" + fmt.Sprint(year) + "/day" + fmt.Sprintf("%02v", day) + ".txt")
 	if err != nil {
 		panic(err)
 	}
@@ -14,7 +14,7 @@ func ReadFile(year, day int) string {
 }
 
 func ReadTestFile(year, day int) string {
-	file, err := os.ReadFile("y" + fmt.Sprint(year) + "/day" + fmt.Sprint(day) + "-test.txt")
+	file, err := os.ReadFile("y" + fmt.Sprint(year) + "/day" + fmt.Sprintf("%02v", day) + "-test.txt")
 	if err != nil {
 		panic(err)
 	}

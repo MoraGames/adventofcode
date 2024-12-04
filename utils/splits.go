@@ -14,6 +14,10 @@ func SplitSpaces(input string) []string {
 	return strings.Split(input, " ")
 }
 
+func SplitCharacters(input string) []string {
+	return strings.Split(input, "")
+}
+
 func SplitCommas(input string) []string {
 	return strings.Split(input, ",")
 }
@@ -24,4 +28,15 @@ func SplitSemicolons(input string) []string {
 
 func SplitHyphens(input string) []string {
 	return strings.Split(input, "-")
+}
+
+func SplitMatrixLinesCharacters(input string) [][]string {
+	lines := SplitLines(input)
+	matrix := make([][]string, len(lines))
+	for i := 0; i < len(lines); i++ {
+		data := SplitCharacters(lines[i])
+		matrix[i] = make([]string, len(data))
+		copy(matrix[i], data)
+	}
+	return matrix
 }

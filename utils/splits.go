@@ -22,8 +22,16 @@ func SplitCommas(input string) []string {
 	return strings.Split(input, ",")
 }
 
+func SplitColons(input string) []string {
+	return strings.Split(input, ":")
+}
+
 func SplitSemicolons(input string) []string {
 	return strings.Split(input, ";")
+}
+
+func SplitPipes(input string) []string {
+	return strings.Split(input, "|")
 }
 
 func SplitHyphens(input string) []string {

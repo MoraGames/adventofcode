@@ -15,6 +15,18 @@ func RemoveIndex[T any](slice []T, index int) []T {
 	return append(newS, slice[index+1:]...)
 }
 
+func Equals[T comparable](slice1, slice2 []T) bool {
+	if len(slice1) != len(slice2) {
+		return false
+	}
+	for i, v := range slice1 {
+		if v != slice2[i] {
+			return false
+		}
+	}
+	return true
+}
+
 func Count[T comparable](slice []T, value T) int {
 	var count int
 	for _, v := range slice {
@@ -23,4 +35,9 @@ func Count[T comparable](slice []T, value T) int {
 		}
 	}
 	return count
+}
+
+func Swap[T any](slice []T, index1, index2 int) []T {
+	slice[index1], slice[index2] = slice[index2], slice[index1]
+	return slice
 }

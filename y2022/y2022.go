@@ -46,3 +46,15 @@ func ReadFile(day int) string {
 func ReadTestFile(day int) string {
 	return utils.ReadTestFile(year, day)
 }
+
+func ReadCustomTestFile(day int) string {
+	return utils.ReadCustomTestFile(year, day)
+}
+
+func WriteOutput(content string, day int, filename string) {
+	utils.WriteOutput(content, year, day, filename)
+}
+
+func PrintSolution(day int, part int, solution string) {
+	utils.PrintSolution(year, day, part, solution)
+}

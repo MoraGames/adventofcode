@@ -1,0 +1,15 @@
+package y2022
+
+func D#P1() {
+	day, part = #, 1
+	input := ReadFile()
+
+	PrintSolution(input)
+}
+
+func D#P2() {
+	day, part = #, 2
+	input := ReadFile()
+
+	PrintSolution(input)
+}

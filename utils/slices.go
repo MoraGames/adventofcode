@@ -15,6 +15,10 @@ func RemoveIndex[T any](slice []T, index int) []T {
 	return append(newS, slice[index+1:]...)
 }
 
+func IsInBounds[T any](slice []T, index int) bool {
+	return index >= 0 && index < len(slice)
+}
+
 func Equals[T comparable](slice1, slice2 []T) bool {
 	if len(slice1) != len(slice2) {
 		return false
@@ -37,7 +41,44 @@ func Count[T comparable](slice []T, value T) int {
 	return count
 }
 
+func FindFirst[T comparable](slice []T, value T) (int, bool) {
+	for i, v := range slice {
+		if v == value {
+			return i, true
+		}
+	}
+	return -1, false
+}
+
+func FindLast[T comparable](slice []T, value T) (int, bool) {
+	for i := len(slice) - 1; i >= 0; i-- {
+		if slice[i] == value {
+			return i, true
+		}
+	}
+	return -1, false
+}
+
+func FindAll[T comparable](slice []T, value T) []int {
+	indexes := make([]int, 0)
+	for i, v := range slice {
+		if v == value {
+			indexes = append(indexes, i)
+		}
+	}
+	if len(indexes) == 0 {
+		return nil
+	}
+	return indexes
+}
+
 func Swap[T any](slice []T, index1, index2 int) []T {
 	slice[index1], slice[index2] = slice[index2], slice[index1]
 	return slice
+}
+
+func Copy[T any](slice []T) []T {
+	newS := make([]T, len(slice))
+	copy(newS, slice)
+	return newS
 }

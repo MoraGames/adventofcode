@@ -1,5 +1,29 @@
 package utils
 
+func MatrixAddCoord[T any](matrix [][]T, coord CoordInterface, value T) [][]T {
+	newM := make([][]T, 0)
+	for ri, row := range matrix {
+		if ri != coord.GetRow() {
+			newM = append(newM, row)
+			continue
+		}
+		newM = append(newM, AddIndex(row, coord.GetCol(), value))
+	}
+	return newM
+}
+
+func MatrixRemoveCoord[T any](matrix [][]T, coord CoordInterface) [][]T {
+	newM := make([][]T, 0)
+	for ri, row := range matrix {
+		if ri != coord.GetRow() {
+			newM = append(newM, row)
+			continue
+		}
+		newM = append(newM, RemoveIndex(row, coord.GetCol()))
+	}
+	return newM
+}
+
 func MatrixIsInbound[T any](matrix [][]T, coords ...CoordInterface) bool {
 	for _, coord := range coords {
 		if coord.GetRow() < 0 || coord.GetRow() >= len(matrix) || coord.GetCol() < 0 || coord.GetCol() >= len(matrix[coord.GetRow()]) {

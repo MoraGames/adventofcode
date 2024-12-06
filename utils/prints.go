@@ -2,8 +2,8 @@ package utils
 
 import "fmt"
 
-func PrintSolution[T any](caption string, solution T) {
-	fmt.Printf("%v = %v\n", caption, solution)
+func PrintSolution[T any](year, day, part int, solution T) {
+	fmt.Printf("[Y%4dD%2d-P%1d] Solution: %v\n", year, day, part, solution)
 }
 
 func PrintSlice[T any](slice []T) {

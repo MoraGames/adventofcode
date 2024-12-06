@@ -117,7 +117,7 @@ func moveGuard(guardMap [][]string, currentCoord Coord, guardRotation string) in
 	// for r := 0; r < len(guardMap); r++ {
 	// 	guardMapOut = append(guardMapOut, strings.Join(guardMap[r], ""))
 	// }
-	// utils.WriteFile("guardMap.txt", strings.Join(guardMapOut, "\n"))
+	// utils.WriteFile("y2024/outputs/day06/guardMap.txt", strings.Join(guardMapOut, "\n"))
 
 	return walkedCeils
 }
@@ -206,7 +206,7 @@ func moveGuard2(guardMap [][]string, currentCoord Coord, guardRotation string) i
 				// for r := 0; r < len(copyGuardMap); r++ {
 				// 	guardMapOut = append(guardMapOut, strings.Join(copyGuardMap[r], ""))
 				// }
-				// utils.WriteFile(fmt.Sprintf("guardMap-%d.txt", loopsFound), strings.Join(guardMapOut, "\n"))
+				// utils.WriteFile(fmt.Sprintf("y2024/outputs/day06/loopGuardMap-%d.txt", loopsFound), strings.Join(guardMapOut, "\n"))
 			}
 		}
 	}

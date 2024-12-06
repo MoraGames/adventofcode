@@ -21,7 +21,8 @@ var (
 )
 
 func D4P1() {
-	matrix := utils.SplitMatrixLinesCharacters(ReadFile(4))
+	day, part = 4, 1
+	matrix := utils.SplitMatrixLinesCharacters(ReadFile())
 
 	var num int
 	for r := 0; r < len(matrix); r++ {
@@ -63,11 +64,12 @@ func D4P1() {
 		}
 	}
 
-	utils.PrintSolution("D4P1()", num)
+	PrintSolution(num)
 }
 
 func D4P2() {
-	matrix := utils.SplitMatrixLinesCharacters(ReadFile(4))
+	day, part = 4, 2
+	matrix := utils.SplitMatrixLinesCharacters(ReadFile())
 
 	var num int
 	for r := 0; r < len(matrix); r++ {
@@ -90,5 +92,5 @@ func D4P2() {
 		}
 	}
 
-	utils.PrintSolution("D4P2()", num)
+	PrintSolution(num)
 }

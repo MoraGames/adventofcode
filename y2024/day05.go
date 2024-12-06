@@ -5,7 +5,8 @@ import (
 )
 
 func D5P1() {
-	inputs := utils.SplitDoubleLines(ReadFile(5))
+	day, part = 5, 1
+	inputs := utils.SplitDoubleLines(ReadFile())
 
 	rules := utils.SplitLines(inputs[0])
 	updates := utils.SplitLines(inputs[1])
@@ -30,11 +31,12 @@ func D5P1() {
 		sumMidValues += value
 	}
 
-	utils.PrintSolution("D5P1()", sumMidValues)
+	PrintSolution(sumMidValues)
 }
 
 func D5P2() {
-	inputs := utils.SplitDoubleLines(ReadFile(5))
+	day, part = 5, 2
+	inputs := utils.SplitDoubleLines(ReadFile())
 
 	rules := utils.SplitLines(inputs[0])
 	updates := utils.SplitLines(inputs[1])
@@ -53,7 +55,7 @@ func D5P2() {
 		sumMidValues += value
 	}
 
-	utils.PrintSolution("D5P2()", sumMidValues)
+	PrintSolution(sumMidValues)
 }
 
 func allNumberRulesValidated(value string, valuesBefore, rules []string) bool {

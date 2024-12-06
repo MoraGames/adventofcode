@@ -17,7 +17,8 @@ func (c Coord) GetRow() int { return c.Row }
 func (c Coord) GetCol() int { return c.Col }
 
 func D6P1() {
-	guardMap := utils.SplitMatrixLinesCharacters(ReadFile(6))
+	day, part = 6, 1
+	guardMap := utils.SplitMatrixLinesCharacters(ReadFile())
 
 	currentCoord := Coord{0, 0}
 	{
@@ -34,11 +35,12 @@ func D6P1() {
 
 	walkedCeils := moveGuard(guardMap, currentCoord, "^")
 
-	utils.PrintSolution("D6P1()", walkedCeils)
+	PrintSolution(walkedCeils)
 }
 
 func D6P2() {
-	guardMap := utils.SplitMatrixLinesCharacters(ReadFile(6))
+	day, part = 6, 2
+	guardMap := utils.SplitMatrixLinesCharacters(ReadFile())
 
 	currentCoord := Coord{0, 0}
 	{
@@ -55,7 +57,7 @@ func D6P2() {
 
 	loopsFound := moveGuard2(guardMap, currentCoord, "^")
 
-	utils.PrintSolution("D6P2()", loopsFound)
+	PrintSolution(loopsFound)
 }
 
 func moveGuard(guardMap [][]string, currentCoord Coord, guardRotation string) int {
@@ -74,7 +76,7 @@ func moveGuard(guardMap [][]string, currentCoord Coord, guardRotation string) in
 			nextCoord = Coord{currentCoord.GetRow(), currentCoord.GetCol() - 1}
 		}
 
-		if utils.IsInbound(guardMap, nextCoord) {
+		if utils.MatrixIsInbound(guardMap, nextCoord) {
 			if guardMap[nextCoord.GetRow()][nextCoord.GetCol()] == "#" {
 				switch guardRotation {
 				case "^":
@@ -153,7 +155,7 @@ func moveGuard2(guardMap [][]string, currentCoord Coord, guardRotation string) i
 						nextCoord = Coord{currentCoord.GetRow(), currentCoord.GetCol() - 1}
 					}
 
-					if utils.IsInbound(copyGuardMap, nextCoord) {
+					if utils.MatrixIsInbound(copyGuardMap, nextCoord) {
 						if copyGuardMap[nextCoord.GetRow()][nextCoord.GetCol()] == "#" || copyGuardMap[nextCoord.GetRow()][nextCoord.GetCol()] == "O" {
 							switch guardRotation {
 							case "^":

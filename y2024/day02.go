@@ -8,7 +8,8 @@ import (
 )
 
 func D2P1() {
-	reports := utils.SplitLines(ReadFile(2))
+	day, part = 2, 1
+	reports := utils.SplitLines(ReadFile())
 
 	var safeNum int
 	for _, report := range reports {
@@ -31,11 +32,12 @@ func D2P1() {
 		}
 	}
 
-	utils.PrintSolution("D2P1()", safeNum)
+	PrintSolution(safeNum)
 }
 
 func D2P2() {
-	reports := utils.SplitLines(ReadFile(2))
+	day, part = 2, 2
+	reports := utils.SplitLines(ReadFile())
 
 	var safeNum int
 	for _, report := range reports {
@@ -57,5 +59,5 @@ func D2P2() {
 		}
 	}
 
-	utils.PrintSolution("D2P2()", safeNum)
+	PrintSolution(safeNum)
 }

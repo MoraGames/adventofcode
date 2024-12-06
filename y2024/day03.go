@@ -8,7 +8,8 @@ import (
 )
 
 func D3P1() {
-	instructions := ReadFile(3)
+	day, part = 3, 1
+	instructions := ReadFile()
 
 	re := regexp.MustCompile(`mul\(\d{1,3},\d{1,3}\)`)
 	matches := re.FindAllStringSubmatch(instructions, -1)
@@ -24,11 +25,12 @@ func D3P1() {
 		result += value1 * value2
 	}
 
-	utils.PrintSolution("D3P1()", result)
+	PrintSolution(result)
 }
 
 func D3P2() {
-	instructions := ReadFile(3)
+	day, part = 3, 2
+	instructions := ReadFile()
 
 	re := regexp.MustCompile(`(mul\(\d{1,3},\d{1,3}\))|don't\(\)|do\(\)`)
 	matches := re.FindAllStringSubmatch(instructions, -1)
@@ -55,5 +57,5 @@ func D3P2() {
 		}
 	}
 
-	utils.PrintSolution("D3P2()", result)
+	PrintSolution(result)
 }

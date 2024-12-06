@@ -9,7 +9,8 @@ import (
 )
 
 func D1P1() {
-	lines := utils.SplitLines(ReadFile(1))
+	day, part = 1, 1
+	lines := utils.SplitLines(ReadFile())
 
 	list1, list2 := make([]int, 0, len(lines)), make([]int, 0, len(lines))
 	for i := 0; i < len(lines); i++ {
@@ -26,11 +27,12 @@ func D1P1() {
 		distanceSum += int(math.Abs(float64(list1[i] - list2[i])))
 	}
 
-	utils.PrintSolution("D1P1()", distanceSum)
+	PrintSolution(distanceSum)
 }
 
 func D1P2() {
-	lines := utils.SplitLines(ReadFile(1))
+	day, part = 1, 2
+	lines := utils.SplitLines(ReadFile())
 
 	list1, list2 := make([]int, 0, len(lines)), make([]int, 0, len(lines))
 	for i := 0; i < len(lines); i++ {
@@ -44,5 +46,5 @@ func D1P2() {
 		similarityScore += list1[i] * utils.Count(list2, list1[i])
 	}
 
-	utils.PrintSolution("D1P2()", similarityScore)
+	PrintSolution(similarityScore)
 }

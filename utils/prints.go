@@ -3,7 +3,7 @@ package utils
 import "fmt"
 
 func PrintSolution[T any](year, day, part int, solution T) {
-	fmt.Printf("[Y%4dD%2d-P%1d] Solution: %v\n", year, day, part, solution)
+	fmt.Printf("[y%4d d%02d p%1d] Solution: %v\n", year, day, part, solution)
 }
 
 func PrintSlice[T any](slice []T) {

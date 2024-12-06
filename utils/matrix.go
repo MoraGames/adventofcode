@@ -1,11 +1,14 @@
 package utils
 
-type MatrixCoord interface {
-	GetCol() int
-	GetRow() int
+type MatrixCoord struct {
+	Row int
+	Col int
 }
 
-func IsInbound[T any](matrix [][]T, coords ...MatrixCoord) bool {
+func (c MatrixCoord) GetRow() int { return c.Row }
+func (c MatrixCoord) GetCol() int { return c.Col }
+
+func IsInbound[T any](matrix [][]T, coords ...CoordInterface) bool {
 	for _, coord := range coords {
 		if coord.GetRow() < 0 || coord.GetRow() >= len(matrix) || coord.GetCol() < 0 || coord.GetCol() >= len(matrix[coord.GetRow()]) {
 			return false
@@ -43,7 +46,44 @@ func MatrixCount[T comparable](matrix [][]T, value T) int {
 	return count
 }
 
-func MatrixSwap[T any](matrix [][]T, coord1, coord2 MatrixCoord) [][]T {
+func MatrixFindFirst[T comparable](matrix [][]T, value T) (CoordInterface, bool) {
+	for r, row := range matrix {
+		for c, v := range row {
+			if v == value {
+				return MatrixCoord{r, c}, true
+			}
+		}
+	}
+	return MatrixCoord{}, false
+}
+
+func MatrixFindLast[T comparable](matrix [][]T, value T) (CoordInterface, bool) {
+	for r := len(matrix) - 1; r >= 0; r-- {
+		for c := len(matrix[r]) - 1; c >= 0; c-- {
+			if matrix[r][c] == value {
+				return MatrixCoord{r, c}, true
+			}
+		}
+	}
+	return MatrixCoord{}, false
+}
+
+func MatrixFindAll[T comparable](matrix [][]T, value T) []CoordInterface {
+	coords := make([]CoordInterface, 0)
+	for r, row := range matrix {
+		for c, v := range row {
+			if v == value {
+				coords = append(coords, MatrixCoord{r, c})
+			}
+		}
+	}
+	if len(coords) == 0 {
+		return nil
+	}
+	return coords
+}
+
+func MatrixSwap[T any](matrix [][]T, coord1, coord2 CoordInterface) [][]T {
 	matrix[coord1.GetRow()][coord1.GetCol()], matrix[coord2.GetRow()][coord2.GetCol()] = matrix[coord2.GetRow()][coord2.GetCol()], matrix[coord1.GetRow()][coord1.GetCol()]
 	return matrix
 }

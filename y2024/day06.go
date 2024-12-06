@@ -6,7 +6,7 @@ import (
 	"github.com/MoraGames/adventofcode/utils"
 )
 
-var _ utils.MatrixCoord = Coord{}
+var _ utils.CoordInterface = Coord{}
 
 type Coord struct {
 	Row int

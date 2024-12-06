@@ -47,3 +47,12 @@ func MatrixSwap[T any](matrix [][]T, coord1, coord2 MatrixCoord) [][]T {
 	matrix[coord1.GetRow()][coord1.GetCol()], matrix[coord2.GetRow()][coord2.GetCol()] = matrix[coord2.GetRow()][coord2.GetCol()], matrix[coord1.GetRow()][coord1.GetCol()]
 	return matrix
 }
+
+func MatrixCopy[T any](matrixSrc [][]T) [][]T {
+	matrixDst := make([][]T, len(matrixSrc))
+	for r := 0; r < len(matrixSrc); r++ {
+		matrixDst[r] = make([]T, len(matrixSrc[r]))
+		copy(matrixDst[r], matrixSrc[r])
+	}
+	return matrixDst
+}

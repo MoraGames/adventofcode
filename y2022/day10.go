@@ -9,14 +9,14 @@ import (
 )
 
 func D10P1() {
-	var currentCycle int //not completed yet
+	var currentCycle int //not completed yet (2024-rewiew: "?? What does this mean?")
 	var sumSignalStrength, xRegister = 0, 1
 
 	lines := utils.SplitLines(ReadFile(10))
 	for l := 0; l < len(lines); l++ {
 		line := strings.Split(lines[l], " ")
-		fmt.Printf("\n\n[DEBUG] ------------------------)")
-		fmt.Printf("\n\tline = %v\n\tcurrentCycle = %v\n\txRegister = %v\n\tsumSignalStrength = %v", line, currentCycle, xRegister, sumSignalStrength)
+		// fmt.Printf("\n\n[DEBUG] ------------------------)")
+		// fmt.Printf("\n\tline = %v\n\tcurrentCycle = %v\n\txRegister = %v\n\tsumSignalStrength = %v", line, currentCycle, xRegister, sumSignalStrength)
 
 		if line[0] == "addx" {
 			currentCycle++
@@ -30,13 +30,13 @@ func D10P1() {
 				panic(err)
 			}
 			xRegister += value
-		} else if line[0] == "noop" { //noop
+		} else if line[0] == "noop" { // noop
 			currentCycle++
 			readSignal(&sumSignalStrength, currentCycle, xRegister)
 		}
 	}
 
-	fmt.Printf("\n\n")
+	// fmt.Printf("\n\n")
 	fmt.Printf("sumSignalStrength = %d\n", sumSignalStrength)
 }
 
@@ -48,8 +48,8 @@ func D10P2() {
 	lines := utils.SplitLines(ReadFile(10))
 	for l := 0; l < len(lines); l++ {
 		line := strings.Split(lines[l], " ")
-		fmt.Printf("\n\n[DEBUG] ------------------------)")
-		fmt.Printf("\n\tline = %v\n\tcurrentCycle = %v\n\txRegister = %v\n\tsumSignalStrength = %v", line, currentCycle, xRegister, sumSignalStrength)
+		// fmt.Printf("\n\n[DEBUG] ------------------------)")
+		// fmt.Printf("\n\tline = %v\n\tcurrentCycle = %v\n\txRegister = %v\n\tsumSignalStrength = %v", line, currentCycle, xRegister, sumSignalStrength)
 
 		if line[0] == "addx" {
 			writePixel(&CTR, currentCycle, xRegister)
@@ -72,13 +72,14 @@ func D10P2() {
 		}
 	}
 
-	fmt.Printf("\n\n")
+	fmt.Println(">>>> DAY 10 PART 2 CRT RENDER SOLUTION:")
 	for i := 0; i < 240; i++ {
-		if i%40 == 0 {
+		if i%40 == 0 && i != 0 {
 			fmt.Printf("\n")
 		}
 		fmt.Printf("%c", CTR[i])
 	}
+	fmt.Println()
 }
 
 func readSignal(sumSignalStrength *int, currentCycle, xRegister int) {
@@ -94,7 +95,7 @@ func readSignal(sumSignalStrength *int, currentCycle, xRegister int) {
 	case 180:
 		fallthrough
 	case 220:
-		fmt.Printf("\n\t%vth cycle!\n\t(sumSignalStrength = %v | currentCycle = %v | xRegister %v)", currentCycle, *sumSignalStrength, currentCycle, xRegister)
+		// fmt.Printf("\n\t%vth cycle!\n\t(sumSignalStrength = %v | currentCycle = %v | xRegister %v)", currentCycle, *sumSignalStrength, currentCycle, xRegister)
 		*sumSignalStrength += currentCycle * xRegister
 	}
 }

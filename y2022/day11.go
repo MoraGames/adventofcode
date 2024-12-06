@@ -20,18 +20,18 @@ func D11P1() {
 	var monkeys []Monkey
 
 	monkeysString := strings.Split(ReadFile(11), "\r\n\r\n")
-	fmt.Printf("monkeysString  = %q\n\n", monkeysString)
+	// fmt.Printf("monkeysString  = %q\n\n", monkeysString)
 
 	for m := 0; m < len(monkeysString); m++ {
-		fmt.Printf("monkeysString[%d]  = %q\n\n", m, monkeysString[m])
+		// fmt.Printf("monkeysString[%d]  = %q\n\n", m, monkeysString[m])
 		var monkey Monkey
 
 		monkeyLines := strings.Split(monkeysString[m], "\r\n")
-		fmt.Printf("monkeyLines  = %q\n\n", monkeyLines)
+		// fmt.Printf("monkeyLines  = %q\n\n", monkeyLines)
 
 		for ml := 1; ml < len(monkeyLines); ml++ {
 			mlSplitted := strings.Split(monkeyLines[ml], ": ")
-			fmt.Printf("mlSplitted  = %q\n\n", mlSplitted)
+			// fmt.Printf("mlSplitted  = %q\n\n", mlSplitted)
 
 			switch ml {
 			case 1: //Starting items
@@ -45,11 +45,11 @@ func D11P1() {
 				}
 			case 2: //Operation
 				parameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("parameters[case 2]  = %q\n\n", parameters)
+				// fmt.Printf("parameters[case 2]  = %q\n\n", parameters)
 				monkey.operation = [2]string{parameters[3], parameters[4]}
 			case 3: //Test
 				stringParameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("stringParameters[case 3]  = %q\n\n", stringParameters)
+				// fmt.Printf("stringParameters[case 3]  = %q\n\n", stringParameters)
 				parameter, err := strconv.Atoi(stringParameters[2])
 				if err != nil {
 					panic(err)
@@ -57,7 +57,7 @@ func D11P1() {
 				monkey.test = parameter
 			case 4: //T=true
 				stringParameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("stringParameters[case 4]  = %q\n\n", stringParameters)
+				// fmt.Printf("stringParameters[case 4]  = %q\n\n", stringParameters)
 				parameter, err := strconv.Atoi(stringParameters[3])
 				if err != nil {
 					panic(err)
@@ -65,7 +65,7 @@ func D11P1() {
 				monkey.results[0] = parameter
 			case 5: //T=false
 				stringParameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("stringParameters[case 5]  = %q\n\n", stringParameters)
+				// fmt.Printf("stringParameters[case 5]  = %q\n\n", stringParameters)
 				parameter, err := strconv.Atoi(stringParameters[3])
 				if err != nil {
 					panic(err)
@@ -116,18 +116,18 @@ func D11P2() {
 	var monkeys []Monkey
 
 	monkeysString := strings.Split(ReadFile(11), "\r\n\r\n")
-	fmt.Printf("monkeysString  = %q\n\n", monkeysString)
+	// fmt.Printf("monkeysString  = %q\n\n", monkeysString)
 
 	for m := 0; m < len(monkeysString); m++ {
-		fmt.Printf("monkeysString[%d]  = %q\n\n", m, monkeysString[m])
+		// fmt.Printf("monkeysString[%d]  = %q\n\n", m, monkeysString[m])
 		var monkey Monkey
 
 		monkeyLines := strings.Split(monkeysString[m], "\r\n")
-		fmt.Printf("monkeyLines  = %q\n\n", monkeyLines)
+		// fmt.Printf("monkeyLines  = %q\n\n", monkeyLines)
 
 		for ml := 1; ml < len(monkeyLines); ml++ {
 			mlSplitted := strings.Split(monkeyLines[ml], ": ")
-			fmt.Printf("mlSplitted  = %q\n\n", mlSplitted)
+			// fmt.Printf("mlSplitted  = %q\n\n", mlSplitted)
 
 			switch ml {
 			case 1: //Starting items
@@ -141,11 +141,11 @@ func D11P2() {
 				}
 			case 2: //Operation
 				parameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("parameters[case 2]  = %q\n\n", parameters)
+				// fmt.Printf("parameters[case 2]  = %q\n\n", parameters)
 				monkey.operation = [2]string{parameters[3], parameters[4]}
 			case 3: //Test
 				stringParameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("stringParameters[case 3]  = %q\n\n", stringParameters)
+				// fmt.Printf("stringParameters[case 3]  = %q\n\n", stringParameters)
 				parameter, err := strconv.Atoi(stringParameters[2])
 				if err != nil {
 					panic(err)
@@ -154,7 +154,7 @@ func D11P2() {
 				globalCommonDivisor *= parameter
 			case 4: //T=true
 				stringParameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("stringParameters[case 4]  = %q\n\n", stringParameters)
+				// fmt.Printf("stringParameters[case 4]  = %q\n\n", stringParameters)
 				parameter, err := strconv.Atoi(stringParameters[3])
 				if err != nil {
 					panic(err)
@@ -162,7 +162,7 @@ func D11P2() {
 				monkey.results[0] = parameter
 			case 5: //T=false
 				stringParameters := strings.Split(mlSplitted[1], " ")
-				fmt.Printf("stringParameters[case 5]  = %q\n\n", stringParameters)
+				// fmt.Printf("stringParameters[case 5]  = %q\n\n", stringParameters)
 				parameter, err := strconv.Atoi(stringParameters[3])
 				if err != nil {
 					panic(err)
@@ -205,7 +205,7 @@ func D11P2() {
 	}
 
 	monkeyBusiness := max1InspectionsNumber * max2InspectionsNumber
-	fmt.Printf("monkeyBusiness = %v\n", monkeyBusiness)
+	fmt.Printf("monkeyBusiness_2 = %v\n", monkeyBusiness)
 }
 
 func doOperation(operation [2]string, item *int) {

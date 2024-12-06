@@ -38,13 +38,13 @@ func D9P1() {
 
 		for t := 0; t < length; t++ {
 			switch line[0] {
-			case "U": //Up
+			case "U": // Up
 				head.r--
-			case "D": //Down
+			case "D": // Down
 				head.r++
-			case "R": //Right
+			case "R": // Right
 				head.c++
-			case "L": //Left
+			case "L": // Left
 				head.c--
 			}
 			if !closeEnough(head, tail) {
@@ -87,13 +87,13 @@ func D9P2() {
 
 		for t := 0; t < length; t++ {
 			switch line[0] {
-			case "U": //Up
+			case "U": // Up
 				rope[0].r--
-			case "D": //Down
+			case "D": // Down
 				rope[0].r++
-			case "R": //Right
+			case "R": // Right
 				rope[0].c++
-			case "L": //Left
+			case "L": // Left
 				rope[0].c--
 			}
 			for i := 0; i < 9; i++ {

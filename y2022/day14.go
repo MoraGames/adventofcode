@@ -64,15 +64,15 @@ func D14P1() {
 	sandSpawner := NewCoord(0, 500-450)
 	grid[sandSpawner.r][sandSpawner.c] = "+"
 
-	printGrid(grid)
+	// printGrid(grid)
 
 	for voidFall := false; !voidFall; {
 		currentSand := sandSpawner
 		for newSand := false; !newSand; {
-			printSandCoord(currentSand)
+			// printSandCoord(currentSand)
 			switch moveSand(grid, &currentSand) {
 			case 1:
-				fmt.Print("\n")
+				// fmt.Print("\n")
 
 				drawSand(grid, currentSand)
 				//printGrid(grid)
@@ -97,7 +97,7 @@ func D14P1() {
 		}
 	}
 
-	printGrid(grid)
+	// printGrid(grid)
 	fmt.Printf("\nstaticSandCounter = %d\n", staticSandCounter)
 }
 
@@ -146,17 +146,17 @@ func D14P2() {
 	sandSpawner := NewCoord(0, 500-250)
 	grid[sandSpawner.r][sandSpawner.c] = "+"
 
-	printGrid(grid)
+	// printGrid(grid)
 
 	var staticSandCounter, sscCounter int
 	for grid[sandSpawner.r][sandSpawner.c] == "+" {
 		currentSand := sandSpawner
 
 		for newSand := false; !newSand; {
-			printSandCoord(currentSand)
+			// printSandCoord(currentSand)
 			switch moveSand(grid, &currentSand) {
 			case 1:
-				fmt.Print("\n")
+				// fmt.Print("\n")
 
 				drawSand(grid, currentSand)
 				staticSandCounter++
@@ -176,19 +176,19 @@ func D14P2() {
 			}
 		}
 
-		var s string
-		_, err := fmt.Scan(s)
-		if err != nil {
-			panic(err)
-		}
+		// var s string
+		// _, err := fmt.Scan(s)
+		// if err != nil {
+		// 	panic(err)
+		// }
 
-		if s == "p" {
-			printGrid(grid)
-			printConcat2Int(sscCounter, staticSandCounter)
-		}
+		// if s == "p" {
+		// 	// printGrid(grid)
+		// 	// printConcat2Int(sscCounter, staticSandCounter)
+		// }
 	}
 
-	printGrid(grid)
+	// printGrid(grid)
 	printConcat2Int(sscCounter, staticSandCounter)
 }
 
@@ -269,22 +269,22 @@ func moveSand(grid [][]string, point *Coord) int {
 	if point.r+1 < len(grid) {
 		if grid[point.r+1][point.c] == "." {
 			point.r += 1
-			fmt.Printf("|\n")
+			// fmt.Printf("|\n")
 			return 0
 		} else if grid[point.r+1][point.c-1] == "." {
 			point.r += 1
 			point.c -= 1
-			fmt.Printf("/\n")
+			// fmt.Printf("/\n")
 			return 0
 		} else if grid[point.r+1][point.c+1] == "." {
 			point.r += 1
 			point.c += 1
-			fmt.Printf("\\\n")
+			// fmt.Printf("\\\n")
 			return 0
 		}
-		fmt.Printf("-\n")
+		// fmt.Printf("-\n")
 		return 1
 	}
-	fmt.Printf("!\n")
+	// fmt.Printf("!\n")
 	return -1
 }

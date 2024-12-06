@@ -1,14 +1,6 @@
 package utils
 
-type MatrixCoord struct {
-	Row int
-	Col int
-}
-
-func (c MatrixCoord) GetRow() int { return c.Row }
-func (c MatrixCoord) GetCol() int { return c.Col }
-
-func IsInbound[T any](matrix [][]T, coords ...CoordInterface) bool {
+func MatrixIsInbound[T any](matrix [][]T, coords ...CoordInterface) bool {
 	for _, coord := range coords {
 		if coord.GetRow() < 0 || coord.GetRow() >= len(matrix) || coord.GetCol() < 0 || coord.GetCol() >= len(matrix[coord.GetRow()]) {
 			return false

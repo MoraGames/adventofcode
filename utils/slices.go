@@ -1,5 +1,7 @@
 package utils
 
+import "fmt"
+
 // Replaced by:
 // slices.Insert[S ~[]E, E any](sliceS, i int, v ...E) S
 func AddIndex[T any](slice []T, index int, value T) []T {
@@ -81,4 +83,23 @@ func Copy[T any](slice []T) []T {
 	newS := make([]T, len(slice))
 	copy(newS, slice)
 	return newS
+}
+
+func ToString[T any](slice []T, withSpaces, withBrackets bool) string {
+	var str string
+	if withBrackets {
+		str += "["
+	}
+	for i := 0; i < len(slice); i++ {
+		if withSpaces && i != len(slice)-1 {
+			str += fmt.Sprintf("%v ", slice[i])
+		} else {
+			str += fmt.Sprintf("%v", slice[i])
+		}
+	}
+	if withBrackets {
+		str += "]"
+	}
+	str += "\n"
+	return str
 }

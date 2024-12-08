@@ -1,5 +1,7 @@
 package utils
 
+import "fmt"
+
 func MatrixAddCoord[T any](matrix [][]T, coord CoordInterface, value T) [][]T {
 	newM := make([][]T, 0)
 	for ri, row := range matrix {
@@ -111,4 +113,31 @@ func MatrixCopy[T any](matrixSrc [][]T) [][]T {
 		copy(matrixDst[r], matrixSrc[r])
 	}
 	return matrixDst
+}
+
+func MatrixToString[T any](matrix [][]T, withSpaces, withBrackets bool) string {
+	var str string
+	if withBrackets {
+		str += "[\n"
+	}
+	for r := 0; r < len(matrix); r++ {
+		if withBrackets {
+			str += "["
+		}
+		for c := 0; c < len(matrix[r]); c++ {
+			if withSpaces && c != len(matrix[r])-1 {
+				str += fmt.Sprintf("%v ", matrix[r][c])
+			} else {
+				str += fmt.Sprintf("%v", matrix[r][c])
+			}
+		}
+		if withBrackets {
+			str += "]"
+		}
+		str += "\n"
+	}
+	if withBrackets {
+		str += "]\n"
+	}
+	return str
 }

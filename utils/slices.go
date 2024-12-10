@@ -79,10 +79,10 @@ func Swap[T any](slice []T, index1, index2 int) []T {
 	return slice
 }
 
-func Copy[T any](slice []T) []T {
-	newS := make([]T, len(slice))
-	copy(newS, slice)
-	return newS
+func Copy[T any](sliceSrc []T) []T {
+	sliceDst := make([]T, len(sliceSrc))
+	copy(sliceDst, sliceSrc)
+	return sliceDst
 }
 
 func ToString[T any](slice []T, withSpaces, withBrackets bool) string {

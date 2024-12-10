@@ -3,9 +3,9 @@ package utils
 import "fmt"
 
 func MatrixTtoS[T any](matrix [][]T) [][]string {
-	output := make([][]string, len(matrix))
+	output := make([][]string, 0, len(matrix))
 	for ri, row := range matrix {
-		output[ri] = make([]string, len(row))
+		output = append(output, make([]string, 0, len(row)))
 		for _, val := range row {
 			output[ri] = append(output[ri], fmt.Sprint(val))
 		}
@@ -14,9 +14,9 @@ func MatrixTtoS[T any](matrix [][]T) [][]string {
 }
 
 func MatrixStoI(matrix [][]string) [][]int {
-	output := make([][]int, len(matrix))
+	output := make([][]int, 0, len(matrix))
 	for ri, row := range matrix {
-		output[ri] = make([]int, len(row))
+		output = append(output, make([]int, 0, len(row)))
 		for _, val := range row {
 			output[ri] = append(output[ri], StoI(val))
 		}
@@ -29,9 +29,9 @@ func MatrixItoS(matrix [][]int) [][]string {
 }
 
 func MatrixStoF(matrix [][]string) [][]float64 {
-	output := make([][]float64, len(matrix))
+	output := make([][]float64, 0, len(matrix))
 	for ri, row := range matrix {
-		output[ri] = make([]float64, len(row))
+		output = append(output, make([]float64, 0, len(row)))
 		for _, val := range row {
 			output[ri] = append(output[ri], StoF(val))
 		}

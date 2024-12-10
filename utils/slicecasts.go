@@ -1,11 +1,9 @@
 package utils
 
-import "fmt"
-
 func SliceTtoS[T any](slice []T) []string {
 	output := make([]string, 0, len(slice))
 	for _, v := range slice {
-		output = append(output, fmt.Sprint(v))
+		output = append(output, TtoS(v))
 	}
 	return output
 }
@@ -19,7 +17,11 @@ func SliceStoI(slice []string) []int {
 }
 
 func SliceItoS(slice []int) []string {
-	return SliceTtoS(slice)
+	output := make([]string, 0, len(slice))
+	for _, v := range slice {
+		output = append(output, ItoS(v))
+	}
+	return output
 }
 
 func SliceStoF(slice []string) []float64 {
@@ -31,5 +33,9 @@ func SliceStoF(slice []string) []float64 {
 }
 
 func SliceFtoS(slice []float64) []string {
-	return SliceTtoS(slice)
+	output := make([]string, 0, len(slice))
+	for _, v := range slice {
+		output = append(output, FtoS(v))
+	}
+	return output
 }

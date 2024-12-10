@@ -1,6 +1,13 @@
 package utils
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
+
+func TtoS[T any](input T) string {
+	return fmt.Sprint(input)
+}
 
 func StoI(input string) int {
 	num, err := strconv.Atoi(input)

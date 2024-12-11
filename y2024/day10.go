@@ -1,15 +1,12 @@
 package y2024
 
 import (
-	"sync"
-
 	"github.com/MoraGames/adventofcode/utils"
 )
 
 var (
-	topReachedByTrailHeads      = make(map[utils.MatrixCoord][]utils.MatrixCoord)
-	topReachedByTrailHeadsMutex = sync.Mutex{}
-	useTopReachedByTrailHeads   = true
+	topReachedByTrailHeads    = make(map[utils.MatrixCoord][]utils.MatrixCoord)
+	useTopReachedByTrailHeads = true
 )
 
 func D10P1() {
@@ -26,21 +23,11 @@ func D10P1() {
 		}
 	}
 
-	// single goroutine version
-	// sum := evaluateTrailHeads(topoMap, trailHeads)
-	// PrintSolution(sum)
-
-	// multiple goroutine version
-	var respChan = make(chan int)
+	var sum int
 	for th := 0; th < len(trailHeads); th++ {
-		go evaluateTrailHead(topoMap, trailHeads[th], respChan)
+		sum += makeMove(topoMap, trailHeads[th], trailHeads[th])
 	}
 
-	var resp, sum int
-	for resp < len(trailHeads) {
-		sum += <-respChan
-		resp++
-	}
 	PrintSolution(sum)
 }
 
@@ -58,37 +45,12 @@ func D10P2() {
 		}
 	}
 
-	// single goroutine version
-	// sum := evaluateTrailHeads(topoMap, trailHeads)
-	// PrintSolution(sum)
-
-	// multiple goroutine version
-	var respChan = make(chan int)
+	var sum int
 	for th := 0; th < len(trailHeads); th++ {
-		go evaluateTrailHead(topoMap, trailHeads[th], respChan)
+		sum += makeMove(topoMap, trailHeads[th], trailHeads[th])
 	}
 
-	var resp, sum int
-	for resp < len(trailHeads) {
-		sum += <-respChan
-		resp++
-	}
 	PrintSolution(sum)
-}
-
-// used by D10P1 and D10P2 in single goroutine version
-func evaluateTrailHeads(topoMap [][]int, trailHeads []utils.MatrixCoord) int {
-	var resp int
-	for th := 0; th < len(trailHeads); th++ {
-		// fmt.Printf("trail head = %v\n", trailHeads[th])
-		resp += makeMove(topoMap, trailHeads[th], trailHeads[th])
-	}
-	return resp
-}
-
-// used by D10P1 and D10P2 in multiple goroutine version
-func evaluateTrailHead(topoMap [][]int, trailHead utils.MatrixCoord, respChan chan int) {
-	respChan <- makeMove(topoMap, trailHead, trailHead)
 }
 
 func makeMove(topoMap [][]int, currentCoord utils.MatrixCoord, startingTrailHead utils.MatrixCoord) int {
@@ -96,12 +58,10 @@ func makeMove(topoMap [][]int, currentCoord utils.MatrixCoord, startingTrailHead
 	if utils.MatrixIsInbound(topoMap, currentCoord) && topoMap[currentCoord.Row][currentCoord.Col] == 9 {
 		var resp int
 		if useTopReachedByTrailHeads {
-			topReachedByTrailHeadsMutex.Lock()
 			if utils.Count(topReachedByTrailHeads[startingTrailHead], currentCoord) == 0 {
 				topReachedByTrailHeads[startingTrailHead] = append(topReachedByTrailHeads[startingTrailHead], currentCoord)
 				resp = 1
 			}
-			topReachedByTrailHeadsMutex.Unlock()
 		} else {
 			resp = 1
 		}

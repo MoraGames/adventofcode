@@ -26,6 +26,18 @@ func MatrixRemoveCoord[T any](matrix [][]T, coord CoordInterface) [][]T {
 	return newM
 }
 
+func MatrixReplaceCoord[T any](matrix [][]T, coord CoordInterface, value T) [][]T {
+	newM := make([][]T, 0)
+	for ri, row := range matrix {
+		if ri != coord.GetRow() {
+			newM = append(newM, row)
+			continue
+		}
+		newM = append(newM, ReplaceIndex(row, coord.GetCol(), value))
+	}
+	return newM
+}
+
 func MatrixIsInbound[T any](matrix [][]T, coords ...CoordInterface) bool {
 	for _, coord := range coords {
 		if coord.GetRow() < 0 || coord.GetRow() >= len(matrix) || coord.GetCol() < 0 || coord.GetCol() >= len(matrix[coord.GetRow()]) {

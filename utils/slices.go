@@ -17,6 +17,13 @@ func RemoveIndex[T any](slice []T, index int) []T {
 	return append(newS, slice[index+1:]...)
 }
 
+func ReplaceIndex[T any](slice []T, index int, value T) []T {
+	newS := make([]T, 0)
+	newS = append(newS, slice[:index]...)
+	newS = append(newS, value)
+	return append(newS, slice[index+1:]...)
+}
+
 func IsInBounds[T any](slice []T, index int) bool {
 	return index >= 0 && index < len(slice)
 }

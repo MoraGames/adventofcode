@@ -31,3 +31,28 @@ func CacheExists[T comparable](cache map[T]int, key T) bool {
 	_, ok := cache[key]
 	return ok
 }
+
+func NewCheck[T comparable]() map[T]struct{} {
+	return make(map[T]struct{})
+}
+
+func CheckInsert[T comparable](check map[T]struct{}, value T) {
+	check[value] = struct{}{}
+}
+
+func CheckTryInsert[T comparable](check map[T]struct{}, value T) bool {
+	if _, ok := check[value]; !ok {
+		check[value] = struct{}{}
+		return true
+	}
+	return false
+}
+
+func CheckDelete[T comparable](check map[T]struct{}, value T) {
+	delete(check, value)
+}
+
+func CheckExists[T comparable](check map[T]struct{}, value T) bool {
+	_, ok := check[value]
+	return ok
+}

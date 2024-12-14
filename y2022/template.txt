@@ -2,14 +2,14 @@ package y2022
 
 func D#P1() {
 	day, part = #, 1
-	input := ReadFile()
+	// input := ReadFile()
 
-	PrintSolution(input)
+	// PrintSolution(input)
 }
 
 func D#P2() {
 	day, part = #, 2
-	input := ReadFile()
+	// input := ReadFile()
 
-	PrintSolution(input)
+	// PrintSolution(input)
 }

@@ -122,7 +122,7 @@ func D14P2() {
 
 	}
 
-	PrintSolution(nil)
+	// PrintSolution(nil)
 }
 
 func printLocationMap(locationMap [103][101]int) {
